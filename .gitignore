@@ -1,0 +1,13 @@
+/Debug
+/Release
+/*.suo
+/*.sln
+/*.sdf
+/*.opensdf
+/CommandLine3d/Debug
+/CommandLine3d/Release
+/CommandLine3d/*.filters
+#/CommandLine3d/*.vcxproj
+/CommandLine3d/*.user
+/CMakeLists.txt.user
+/LocalConfig.cmake
