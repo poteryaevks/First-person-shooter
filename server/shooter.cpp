@@ -1,6 +1,7 @@
 #include "shooter.h"
 
-
+#define OLC_PGE_APPLICATION
+#include "third_party/olcPixelGameEngine/olcPixelGameEngine.h"
 
 #include <chrono>
 #include <cmath>

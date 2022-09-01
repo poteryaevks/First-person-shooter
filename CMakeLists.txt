@@ -30,6 +30,8 @@ if(Qt5_FOUND)
     message("Qt5 core found: " ${Qt5Core_LIBRARIES})
 endif()
 
+find_package(X11 REQUIRED)
+
 # Seek Boost
 
 find_package(Boost

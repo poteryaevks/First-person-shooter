@@ -13,7 +13,7 @@
 #include <atomic>
 #include <future>
 
-#include <olcPixelGameEngine/olcPixelGameEngine.h>
+#include "third_party/olcPixelGameEngine/olcPixelGameEngine.h"
 //#include <windows.h>
 
 

@@ -11,3 +11,5 @@
 /CommandLine3d/*.user
 /CMakeLists.txt.user
 /LocalConfig.cmake
+build
+.vscode

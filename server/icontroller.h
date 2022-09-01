@@ -3,13 +3,11 @@
 
 #include <boost/noncopyable.hpp>
 
-
 class IController
-        : private boost::noncopyable
+    : private boost::noncopyable
 {
 
 public:
-
     //!
     //! \brief forwardPressed
     //! \return
@@ -34,9 +32,5 @@ public:
     //!
     virtual bool leftPressed() = 0;
 };
-
-
-
-
 
 #endif

@@ -13,52 +13,46 @@
 using namespace almaz::net;
 
 class NetController final
-        : public IController
+    : public IController
 {
 
     using Server = TcpServer<eShooterTypes, CustomServerMsgExec>;
 
 public:
-
     NetController()
         : leftPushed_(false),
           rightPushed_(false),
           forwardPushed_(false),
           backPushed_(false)
-    {}
+    {
+    }
 
     //!
     //! \brief init
     //!
-    bool init(unsigned int port){
+    bool init(unsigned int port)
+    {
 
-        SignalSender::instance().leftSignal.connect([this](){
-            leftPushed_ = true;
-        });
+        SignalSender::instance().leftSignal.connect([this]()
+                                                    { leftPushed_ = true; });
 
-        SignalSender::instance().rightSignal.connect([this](){
-            rightPushed_ = true;
-        });
+        SignalSender::instance().rightSignal.connect([this]()
+                                                     { rightPushed_ = true; });
 
-        SignalSender::instance().forwardSignal.connect([this](){
-            forwardPushed_ = true;
-        });
+        SignalSender::instance().forwardSignal.connect([this]()
+                                                       { forwardPushed_ = true; });
 
-        SignalSender::instance().backSignal.connect([this](){
-            backPushed_ = true;
-        });
+        SignalSender::instance().backSignal.connect([this]()
+                                                    { backPushed_ = true; });
 
-        if(!Server::instance().init(port)){
-
+        if (!server_.init(port))
+        {
             ALMAZ_LOCAL_LOG1(almaz::logger::error) << "Tcp server is inited..";
             return false;
         }
 
-        future_ = std::async(std::launch::async, [](){
-
-            // ..run server..
-            return Server::instance().run();
-        });
+        future_ = std::async(std::launch::async, [this]()
+                             { return server_.run(); });
 
         return true;
     }
@@ -67,10 +61,12 @@ public:
     //! \brief forwardPressed
     //! \return
     //!
-    bool forwardPressed() override{
+    bool forwardPressed() override
+    {
 
-        if(forwardPushed_){
-            forwardPushed_  = false;
+        if (forwardPushed_)
+        {
+            forwardPushed_ = false;
             return true;
         }
 
@@ -81,10 +77,12 @@ public:
     //! \brief backPressed
     //! \return
     //!
-    bool backPressed() override{
+    bool backPressed() override
+    {
 
-        if(backPushed_){
-            backPushed_  = false;
+        if (backPushed_)
+        {
+            backPushed_ = false;
             return true;
         }
 
@@ -95,10 +93,12 @@ public:
     //! \brief rightPressed
     //! \return
     //!
-    bool rightPressed() override{
+    bool rightPressed() override
+    {
 
-        if(rightPushed_){
-            rightPushed_  = false;
+        if (rightPushed_)
+        {
+            rightPushed_ = false;
             return true;
         }
 
@@ -109,10 +109,12 @@ public:
     //! \brief leftPressed
     //! \return
     //!
-    bool leftPressed() override{
+    bool leftPressed() override
+    {
 
-        if(leftPushed_){
-            leftPushed_  = false;
+        if (leftPushed_)
+        {
+            leftPushed_ = false;
             return true;
         }
 
@@ -120,14 +122,12 @@ public:
     }
 
 private:
-
     std::future<void> future_;
-
+    Server server_;
     bool leftPushed_;
     bool rightPushed_;
     bool forwardPushed_;
     bool backPushed_;
-
 };
 
 #endif

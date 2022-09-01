@@ -38,6 +38,7 @@ int main(int argc, char* argv[])
 
     Shooter shooter;
     shooter.init(std::move(localController));
+    std::cerr << "dsds\n";
     try{
         auto res = shooter.Start();
     }

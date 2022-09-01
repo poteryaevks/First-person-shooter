@@ -25,6 +25,7 @@ target_include_directories(${TARGET_NAME} PRIVATE
     ${Almaz_INCLUDE_DIRS}
     ${NET_SHOOTER_ROOT_DIR}
     ${PIXEL_GAME_ENGINE}
+    ${CMAKE_SOURE_DIR}
     )
 
 target_link_libraries(${TARGET_NAME} PUBLIC
@@ -37,7 +38,7 @@ target_link_libraries(${TARGET_NAME} PUBLIC
     Almaz::misc
     png
     GL
-    X11
+    X11::X11
     )
 
 
